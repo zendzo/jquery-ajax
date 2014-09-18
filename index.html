@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Test JQuery</title>
+	<link rel="stylesheet" href="bootstrap.css">
+	<script type="text/javascript" src="jquery-1.10.2.js"></script>
+</head>
+<body>
+
+
+<a class="dir button primary-button" href="/ajax/about.html">About</a>
+
+<a class="dir button primary-button" href="/ajax/contact.html">Contact</a>
+
+<a class="dir button primary-button" href="/ajax/services.html">Services</a>
+
+	<div class="container">
+		
+	</div>
+	<div class="textWriter">
+		
+	</div>
+
+	<script>
+		$('a.dir').on('click',function( e ){
+			var href = $(this).attr('href');
+			$('div.container').load(href);
+
+			e.preventDefault();
+
+			console.clear();
+		});
+	</script>
+	
+</body>
+</html>

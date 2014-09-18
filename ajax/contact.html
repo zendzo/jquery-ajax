@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Contact</title>
+	<style>
+	.custom{
+		border: 0px solid white;
+		margin-bottom: 10px;
+	}
+	</style>
+</head>
+<body>
+	<h1>Contact</h1>
+	<h3 id="placeholder"></h3>
+	<form action="">
+		<div>
+			<textarea name="content" id="content" cols="30" rows="10" class="form-control custom"></textarea>
+		</div>
+		<div>
+			<input type="submit" class="btn btn-primary">
+		</div>
+	</form>
+
+	<script>
+
+
+	//grab text content from source
+	var loadData = function(){
+		$.post('load.php',function(data){
+			$('h3#placeholder').html(data);
+		});
+	}
+
+	//load data when page ready
+	loadData();
+
+	//lister for the click
+	$('form').on('submit',function( e ){
+
+		//save input to source
+		$.post('save.php',$(this).serialize(),function(data){
+			loadData();
+			console.log(data);
+		});
+		//disable dafault
+		e.preventDefault();
+	});
+	</script>
+</body>
+</html>
